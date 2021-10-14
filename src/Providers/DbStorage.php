@@ -40,7 +40,7 @@ class DbStorage implements IStorage
             return $default;
         }
 
-        if ($model->expired_at && $model->expired_at <= time()) {
+        if ($model->expired_at && strtotime($model->expired_at) <= time()) {
             $this->remove($model->key);
             return $default;
         }
